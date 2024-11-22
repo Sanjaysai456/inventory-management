@@ -47,10 +47,7 @@ const UserDashboard = () => {
               <MessageCircle className="h-5 w-5" />
               <span>Contact Us</span>
             </a>
-            <a href="#" className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all">
-              <Star className="h-5 w-5" />
-              <span>Feedback</span>
-            </a>
+           
           </div>
         </div>
       </div>
@@ -101,21 +98,8 @@ const UserDashboard = () => {
               </div>
             </div>
 
-            {/* User Profile Card */}
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">My Orders</h2>
-              <div className="flex items-center space-x-3 bg-white dark:bg-gray-700 px-6 py-3 rounded-xl shadow-sm">
-                <div className="bg-blue-100 dark:bg-blue-900 p-2 rounded-full">
-                  <User className="h-6 w-6 text-blue-600 dark:text-blue-300" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-gray-800 dark:text-white font-medium">
-                    {authUser?.displayName || authUser?.email?.split('@')[0] || 'Guest'}
-                  </span>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{authUser?.email}</span>
-                </div>
-              </div>
-            </div>
+          
+            
 
             {/* Orders List */}
             <div className="bg-white dark:bg-gray-700 rounded-xl shadow-sm mb-8 overflow-hidden">

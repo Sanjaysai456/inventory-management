@@ -18,9 +18,7 @@ const Header = () => {
             {/* Right side - User info and actions */}
             <div className="flex items-center gap-4">
                 {/* Notifications */}
-                <button className="p-2 hover:bg-gray-100 rounded-full">
-                    <Bell className="h-5 w-5 text-gray-600" />
-                </button>
+              
 
                 {/* User Profile */}
                 <div className="flex items-center gap-3">

@@ -11,6 +11,7 @@ import HeroPage from './pages/hero/heropage';
 import './index.css';
 import { ThemeProvider } from './context/ThemeContext';
 import Login from './signin/sign';
+import About from './about/about';
 
 import Register from './signup/signup';
 import Contact from './pages/user/contact';
@@ -37,6 +38,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
     </ThemeProvider>

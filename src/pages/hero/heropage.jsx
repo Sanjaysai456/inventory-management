@@ -84,7 +84,7 @@ const HeroPage = () => {
                 transition={{ delay: 0.8, duration: 0.5 }}
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Link to="/roleselect" className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 text-lg font-semibold shadow-lg">
+                <Link to="/register " className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 text-lg font-semibold shadow-lg">
                   Get Started
                 </Link>
                 <Link to="/about" className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all transform hover:scale-105 text-lg font-semibold text-gray-700 dark:text-gray-300">

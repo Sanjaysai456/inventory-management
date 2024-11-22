@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import Header from "../../components/dashboardHeader/header";
+import { Home, Info, Star } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
+    email: "", 
     subject: "",
     message: ""
   });
@@ -57,7 +58,29 @@ const Contact = () => {
     <div className="min-h-screen bg-gray-100">
       <Header />
       
-      <div className="container mx-auto px-4 py-8 mt-16">
+      {/* Sidebar */}
+      <div className="fixed left-0 top-16 h-full w-64 bg-white shadow-lg">
+        <div className="p-6 space-y-6">
+          <div className="space-y-4">
+            <a href="/userdashboard" className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all">
+              <Home className="h-5 w-5" />
+              <span>Dashboard</span>
+            </a>
+            <a href="/about" className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all">
+              <Info className="h-5 w-5" />
+              <span>About Us</span>
+            </a>
+            <a href="/contact" className="flex items-center space-x-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 p-2 rounded-lg transition-all">
+              <MessageCircle className="h-5 w-5" />
+              <span>Contact Us</span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="ml-64 p-8 pt-24"> {/* Added pt-24 for top padding */}
         <div className="max-w-5xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -82,7 +105,7 @@ const Contact = () => {
                 <Mail className="h-8 w-8 text-blue-500" />
                 <h3 className="text-xl font-semibold ml-3">Email</h3>
               </div>
-              <p className="text-gray-600">support@inventory.com</p>
+              <p className="text-gray-600">inventrymanagement6@gmail.com</p>
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
@@ -90,7 +113,7 @@ const Contact = () => {
                 <MapPin className="h-8 w-8 text-blue-500" />
                 <h3 className="text-xl font-semibold ml-3">Location</h3>
               </div>
-              <p className="text-gray-600">123 Business Ave, Suite 100</p>
+              <p className="text-gray-600">PocahammaGully , Rakasipet ,Bodhan ,Telangana ,India</p>
             </div>
           </div>
 
