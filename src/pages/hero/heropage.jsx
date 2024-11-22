@@ -1,9 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box, Package, TrendingUp, BarChart, Truck, Users } from 'lucide-react';
+import { useAuth } from '../../context/Authcontext/Authcontex';
+
+
+
+
 
 const HeroPage = () => {
+  const navigate = useNavigate();
+  const { userLoggedIn } = useAuth();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
       {/* Header */}
@@ -23,11 +31,24 @@ const HeroPage = () => {
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-6"
+              className="flex items-center gap-4"
             >
-              <Link to="/about" className="text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors">About Us</Link>
-              <Link to="/roleselect" className="px-4 py-2 text-blue-500 border border-blue-500 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition-colors">Login</Link>
-              <Link to="/signup" className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">Sign Up</Link>
+              
+                <>
+                  <Link 
+                    to="/login" 
+                    className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 font-medium shadow-md"
+                  >
+                    Login
+                  </Link>
+                  <Link 
+                    to="/register" 
+                    className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 font-medium shadow-md"
+                  >
+                    SignUp
+                  </Link>
+                </>
+              
             </motion.nav>
           </div>
         </div>

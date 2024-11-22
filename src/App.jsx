@@ -9,9 +9,15 @@ import UserDashboard from './pages/user/userdashboard';
 import RoleSelect from './pages/roleselect/roleselect';
 import HeroPage from './pages/hero/heropage';
 import './index.css';
+import { ThemeProvider } from './context/ThemeContext';
+import Login from './signin/sign';
+
+import Register from './signup/signup';
+import Contact from './pages/user/contact';
 
 export default function App() {
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <Routes>
 
@@ -22,12 +28,17 @@ export default function App() {
         <Route path="/roleselect" element={<RoleSelect />} />
         <Route path="/user" element={<UserDashboard />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+       
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/robots" element={<RobotStatus />} />
         <Route path="/messages" element={<Messages />} />
+        
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   )
 }

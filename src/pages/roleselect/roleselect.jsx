@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Package } from "lucide-react";
 
 const RoleSelect = () => {
   const navigate = useNavigate();
@@ -34,7 +36,7 @@ const RoleSelect = () => {
     if (selectedRole === "admin") {
       if (credentials.id === validCredentials.admin.id && 
           credentials.passcode === validCredentials.admin.passcode) {
-        navigate("/dashboard");
+        navigate("/home");
       } else {
         setError("Invalid admin credentials");
       }
@@ -51,94 +53,112 @@ const RoleSelect = () => {
   };
 
   return (
-    <div className="flex-1 p-8 bg-gray-50 dark:bg-gray-800 min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full bg-white dark:bg-gray-700 p-8 rounded-lg shadow-sm">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white text-center">
-            Welcome Back!
-          </h2>
-          <p className="mt-2 text-center text-gray-600 dark:text-gray-300">
-            Please select your role to continue
-          </p>
-        </div>
-        
-        <div className="flex justify-center space-x-4 mt-6">
-          <button
-            onClick={() => handleRoleSelect("admin")}
-            className={`px-6 py-3 rounded-md ${
-              selectedRole === "admin"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200"
-            }`}
-          >
-            Admin
-          </button>
-          <button
-            onClick={() => handleRoleSelect("user")}
-            className={`px-6 py-3 rounded-md ${
-              selectedRole === "user"
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200"
-            }`}
-          >
-            User
-          </button>
-        </div>
-
-        {selectedRole && (
-          <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-            <div>
-              <label htmlFor="id" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                {selectedRole === "admin" ? "Admin ID" : "User ID"}
-              </label>
-              <input
-                id="id"
-                type="text"
-                required
-                value={credentials.id}
-                onChange={(e) => setCredentials({...credentials, id: e.target.value})}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                placeholder={selectedRole === "admin" ? "Enter admin ID" : "Enter user ID"}
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="passcode" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Passcode
-              </label>
-              <input
-                id="passcode"
-                type="password"
-                required
-                value={credentials.passcode}
-                onChange={(e) => setCredentials({...credentials, passcode: e.target.value})}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:text-white"
-                placeholder="Enter your passcode"
-              />
-            </div>
-
-            {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
-            )}
-
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+      {/* Header */}
+      <header className="fixed w-full top-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-sm z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <motion.div 
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center"
             >
-              Continue
-            </button>
-          </form>
-        )}
-
-        {selectedRole && (
-          <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-            <p className="text-center">
-              {selectedRole === "admin" ? 
-                "Admin credentials: ID: admin123 | Pass: admin@456" :
-                "Sample user: ID: user1 | Pass: pass123"}
-            </p>
+              <Package className="h-8 w-8 text-blue-500" />
+              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">InventoryPro</span>
+            </motion.div>
           </div>
-        )}
+        </div>
+      </header>
+
+      <div className="pt-24 flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md space-y-8 bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg"
+        >
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Select Your Role</h2>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">Choose how you want to access InventoryPro</p>
+          </div>
+
+          <div className="flex justify-center space-x-6 mt-8">
+            <button
+              onClick={() => handleRoleSelect("admin")}
+              className={`px-8 py-3 rounded-lg transition-all transform hover:scale-105 font-medium shadow-md ${
+                selectedRole === "admin"
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              }`}
+            >
+              Admin
+            </button>
+            <button
+              onClick={() => handleRoleSelect("user")}
+              className={`px-8 py-3 rounded-lg transition-all transform hover:scale-105 font-medium shadow-md ${
+                selectedRole === "user"
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white"
+                  : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+              }`}
+            >
+              User
+            </button>
+          </div>
+
+          {selectedRole && (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  {selectedRole === "admin" ? "Admin ID" : "User ID"}
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={credentials.id}
+                  onChange={(e) => setCredentials({...credentials, id: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                  placeholder={selectedRole === "admin" ? "Enter admin ID" : "Enter user ID"}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Passcode
+                </label>
+                <input
+                  type="password"
+                  required
+                  value={credentials.passcode}
+                  onChange={(e) => setCredentials({...credentials, passcode: e.target.value})}
+                  className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                  placeholder="Enter your passcode"
+                />
+              </div>
+
+              {error && (
+                <p className="text-red-500 text-sm text-center">{error}</p>
+              )}
+
+              <button
+                type="submit"
+                className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 font-medium shadow-md"
+              >
+                Continue
+              </button>
+            </form>
+          )}
+
+          {selectedRole && (
+            <div className="mt-4">
+              <p className="text-center text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                {selectedRole === "admin" ? 
+                  "Demo Admin → ID: admin123 | Pass: admin@456" :
+                  "Demo User → ID: user1 | Pass: pass123"}
+              </p>
+            </div>
+          )}
+        </motion.div>
       </div>
     </div>
   );
