@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Package } from "lucide-react";
+import Logo from '../../assests/logo.png';
 
 const RoleSelect = () => {
   const navigate = useNavigate();
@@ -64,8 +65,12 @@ const RoleSelect = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <Package className="h-8 w-8 text-blue-500" />
-              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">InventoryPro</span>
+              {Logo ? (
+                <img src={Logo} alt="RS Inventory Logo" className="h-10 w-12 " />
+              ) : (
+                <Package className="h-8 w-8 text-blue-500" />
+              )}
+              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">RS Inventory</span>
             </motion.div>
           </div>
         </div>

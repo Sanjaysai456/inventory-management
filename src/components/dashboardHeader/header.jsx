@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/Authcontext/Authcontex';
 import { doSignOut } from '../../firebase/auth';
 import { UserCircle, LogOut, Bell } from 'lucide-react';
+import Logo from '../../assests/logo.png';
+
 
 const Header = () => {
     const navigate = useNavigate();
@@ -12,7 +14,8 @@ const Header = () => {
         <nav className='flex justify-between items-center w-full z-20 fixed top-0 left-0 h-16 border-b bg-white shadow-sm px-6'>
             {/* Left side - Brand */}
             <div className="flex items-center">
-                <h1 className="text-xl font-bold text-gray-800">RoboInventory</h1>
+                <img src={Logo} alt="RS Inventory Logo" className="h-10 w-12 mr-2" />
+                <h1 className="text-xl font-bold text-gray-800">RS Inventory</h1>
             </div>
 
             {/* Right side - User info and actions */}

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Home, Package, ShoppingBag, Battery, Bell, Sun, Moon } from "lucide-react";
 import { useTheme } from '../../context/ThemeContext';
+import Logo from '../../assests/logo.png';
 
 const Sidebar = ({ isSidebarOpen }) => {
   const location = useLocation();
@@ -24,8 +25,13 @@ const Sidebar = ({ isSidebarOpen }) => {
 
   return (
     <div className={`${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative w-64 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-xl h-full transition-all duration-300 ease-in-out z-40`}>
-      <div className="p-6">
-        <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">RoboInventory</h2>
+      <div className="p-6 flex items-center">
+        {Logo ? (
+          <img src={Logo} alt="RS Inventory Logo" className="h-10 w-12 mr-2" />
+        ) : (
+          <Package className="h-8 w-8 mr-2 text-blue-500" />
+        )}
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">RS Inventory</h2>
       </div>
       <nav className="mt-6">
         <Link to="/home" onClick={(e) => handleNavigation('/home', e)} className="flex items-center px-6 py-3 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-all duration-300">

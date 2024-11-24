@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Package, TrendingUp, BarChart, Truck, Users } from 'lucide-react';
 import { useAuth } from '../../context/Authcontext/Authcontex';
-
-
-
-
+import Logo from '../../assests/logo.png'; // Fixed import syntax
 
 const HeroPage = () => {
   const navigate = useNavigate();
@@ -24,8 +21,12 @@ const HeroPage = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <Package className="h-8 w-8 text-blue-500" />
-              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">InventoryPro</span>
+              {Logo ? ( // Added conditional rendering
+                <img src={Logo} alt="RS Inventory Logo" className="h-10 w-12 " />
+              ) : (
+                <div className="h-8 w-8 bg-gray-200 rounded-full" /> // Fallback
+              )}
+              <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">RS Inventory</span>
             </motion.div>
             <motion.nav 
               initial={{ x: 50, opacity: 0 }}
@@ -84,7 +85,7 @@ const HeroPage = () => {
                 transition={{ delay: 0.8, duration: 0.5 }}
                 className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
-                <Link to="/register " className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 text-lg font-semibold shadow-lg">
+                <Link to="/register" className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg hover:opacity-90 transition-all transform hover:scale-105 text-lg font-semibold shadow-lg">
                   Get Started
                 </Link>
                 <Link to="/about" className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-all transform hover:scale-105 text-lg font-semibold text-gray-700 dark:text-gray-300">
@@ -203,7 +204,7 @@ const HeroPage = () => {
           </div>
           <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
             <p className="text-center text-gray-500 dark:text-gray-400">
-              © 2024 InventoryPro. All rights reserved.
+              © 2024 RS Inventory. All rights reserved.
             </p>
           </div>
         </div>

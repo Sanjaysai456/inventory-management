@@ -3,6 +3,7 @@ import { Package, MessageSquare, User, TrendingUp, Calendar, Box, Home, Info, Me
 import { ordersData, usersData } from "./userData";
 import Header from "../../components/dashboardHeader/header";
 import { useAuth } from "../../context/Authcontext/Authcontex";
+import Logo from '../../assests/logo.png';
 
 const UserDashboard = () => {
   const [currentUserId, setCurrentUserId] = useState(1);
